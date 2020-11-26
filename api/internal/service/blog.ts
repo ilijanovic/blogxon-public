@@ -8,7 +8,7 @@ import { BlogInterface, BlogQueryInterface } from "../../../types"
 
 class BlogService {
 
-  public async getBlogs(limit: number = 10, skip: number = 0): Promise<BlogQueryInterface[]> {
+  public async getBlogs(limit: number = 10, skip: number = 0): Promise<Omit<BlogQueryInterface, "content">[]> {
     return await Blog.aggregate([
       { $limit: limit },
       { $skip: skip },
@@ -30,7 +30,8 @@ class BlogService {
       },
       {
         $project: {
-          ips: 0
+          ips: 0,
+          content: 0
         }
       }
     ]).exec()

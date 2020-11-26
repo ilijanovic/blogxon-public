@@ -21,9 +21,8 @@ class EmailService {
       ({ email }) => email
     )
 
-
-
     sgMail.setApiKey(process.env.SENDGRID!)
+    if (!emails.length) return undefined
     return sgMail.send({ to: emails, from, subject, text, html })
   }
 
