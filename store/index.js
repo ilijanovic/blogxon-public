@@ -19,8 +19,8 @@ export const mutations = {
 export const actions = {
   async nuxtServerInit({ commit }, { req, route, redirect }) {
     let [{ cookieService }, { tokenService }] = await Promise.all([
-      import('../blogxon-public/api/internal/service/cookie'),
-      import('../blogxon-public/api/internal/service/token'),
+      import('../api/internal/service/cookie'),
+      import('../api/internal/service/token'),
     ])
 
     let token = cookieService.getTokenFromCookie(req)

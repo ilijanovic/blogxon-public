@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex-1 hover:bg-gray-100 cursor-pointer text-gray-700 text-xl flex p-3 justify-between mr-3 border border-gray rounded flex shadow-md"
+    class="flex-1 hover:bg-gray-100 cursor-pointer text-gray-700 text-xl flex p-3 justify-between mr-3 border rounded flex shadow-md"
   >
     <div class="box">
       <slot></slot>

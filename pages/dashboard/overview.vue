@@ -37,7 +37,7 @@
     </div>
 
     <div class="flex">
-      <div class="flex-1 mr-3">
+      <div class="flex-1 mr-3 shadow-md border rounded-lg">
         <barchart :viewsChartData="viewsChartData" />
       </div>
       <div class="flex-1 mr-3">
