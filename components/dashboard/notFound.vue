@@ -1,5 +1,5 @@
 <template>
-  <div class="notfound">
+  <div class="flex justify-center p-5 border rounded-md shadow-md">
     <p>{{ message }}</p>
   </div>
 </template>
@@ -8,16 +8,3 @@ export default {
   props: ['message'],
 }
 </script>
-<style scoped>
-.notfound {
-  color: var(--dark);
-  border-radius: 6px;
-  padding: 30px;
-  display: flex;
-  justify-content: center;
-  box-shadow: 0 0 10px -8px black;
-  border: 1px solid #dadada;
-  margin-top: 20px;
-  font-size: 18px;
-}
-</style>

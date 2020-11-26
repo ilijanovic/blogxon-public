@@ -1,10 +1,20 @@
 <template>
-  <div tabindex="0" ref="menubox" class="options">
-    <div @click="updatePost" class="option">
+  <div
+    tabindex="0"
+    ref="menubox"
+    class="bg-white shadow-md border rounded-md focus:outline-none w-40 absolute top-0 right-0 m-4"
+  >
+    <div
+      @click="updatePost"
+      class="flex justify-between items-center hover:bg-gray-200 cursor-pointer p-3"
+    >
       <p>Edit</p>
       <EditIcon size="1.2x" />
     </div>
-    <div @click="deletePost" class="option">
+    <div
+      @click="deletePost"
+      class="flex justify-between items-center hover:bg-gray-200 cursor-pointer p-3"
+    >
       <p>Delete</p>
       <TrashIcon size="1.2x" />
     </div>
@@ -42,23 +52,3 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped>
-.options {
-  right: 10px;
-  top: 15px;
-  position: absolute;
-  min-width: 150px;
-  z-index: 1;
-  border: 1px solid #dadada;
-  .option {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    background: white;
-    cursor: pointer;
-    &:hover {
-      background: #f5f6fa;
-    }
-  }
-}
-</style>

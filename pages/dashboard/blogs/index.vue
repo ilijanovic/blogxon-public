@@ -1,7 +1,7 @@
 <template>
-  <div class="dashboard">
-    <h1>Blogs</h1>
-    <div class="buttonbox">
+  <div>
+    <h1 class="text-xl my-3">Blogs</h1>
+    <div class="flex justify-between mb-5">
       <primary @click.native="$router.go(-1)">go back</primary>
       <NuxtLink to="/dashboard/blogs/createPost">
         <primary>Create new post</primary>
@@ -57,27 +57,3 @@ export default {
   layout: 'dashboard',
 }
 </script>
-<style lang="scss" scoped>
-.dashboard {
-  padding: 15px;
-  .loader {
-    background: var(--dark);
-    border-radius: 6px;
-    padding: 10px;
-    display: flex;
-    justify-content: space-between;
-    color: white;
-    max-width: 200px;
-    margin-top: 20px;
-    align-items: center;
-  }
-
-  h1 {
-    margin-bottom: 1em;
-  }
-  .buttonbox {
-    display: flex;
-    justify-content: space-between;
-  }
-}
-</style>

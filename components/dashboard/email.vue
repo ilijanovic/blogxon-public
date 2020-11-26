@@ -1,10 +1,16 @@
 <template>
-  <div :class="{ disabled }" class="email">
+  <div
+    :class="{ disabled }"
+    class="flex justify-between items-center p-5 border shadow-md rounded-md"
+  >
     <p>{{ email.email }}</p>
     <p>{{ formatDate(email.created) }}</p>
-    <div class="icons">
-      <div @click="deleteEmail(email._id)" class="icon">
-        <TrashIcon style="color: red" />
+    <div>
+      <div @click="deleteEmail(email._id)">
+        <TrashIcon
+          size="2.2x"
+          class="cursor-pointer text-red-600 p-2 transition:bg duration-300 rounded-full active:bg-red-300 hover:bg-red-200"
+        />
       </div>
     </div>
   </div>
@@ -42,30 +48,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.email {
-  border-radius: 6px;
-  border: 1px solid #dadada;
-  margin: 20px 0;
-  box-shadow: 0 0 10px -8px black;
-  padding: 15px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-flow: wrap;
-  p {
-    margin: 10px 0;
-  }
-  .icons {
-    display: flex;
-    align-items: center;
-    .icon {
-      margin-left: 20px;
-      padding: 8px;
-      cursor: pointer;
-      border-radius: 6px;
-    }
-  }
-}
 .disabled {
   background: lightgrey !important;
   color: grey !important;

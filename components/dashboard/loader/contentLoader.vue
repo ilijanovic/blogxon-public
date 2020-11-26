@@ -1,5 +1,5 @@
 <template>
-  <div class="load">
+  <div class="flex p-6 rounded-lg border shadow-md justify-center">
     <p>Loading...</p>
     <div class="half-circle-spinner">
       <div class="circle circle-1"></div>
@@ -9,20 +9,6 @@
 </template>
 
 <style lang="scss" scoped>
-.load {
-  color: var(--dark);
-  border-radius: 6px;
-  padding: 30px;
-  display: flex;
-  justify-content: center;
-  box-shadow: 0 0 10px -8px black;
-  border: 1px solid #dadada;
-  margin-top: 20px;
-  font-size: 18px;
-  p {
-    margin-right: 20px;
-  }
-}
 .half-circle-spinner,
 .half-circle-spinner * {
   box-sizing: border-box;

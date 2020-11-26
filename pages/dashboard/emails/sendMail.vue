@@ -1,21 +1,35 @@
 <template>
-  <div class="dashboard">
-    <h1>Send email</h1>
-    <div class="inputbox">
-      <div class="inputbox">
-        <small>From</small>
-        <input v-model="from" type="text" />
-      </div>
-      <div class="inputbox">
-        <small>Subject</small>
-        <input v-model="subject" type="text" />
-      </div>
-      <div class="inputbox">
-        <small>Message</small>
-        <textarea v-model="text" name="" id="" cols="30" rows="10"></textarea>
-      </div>
-      <primary @click.native="send" style="margin-left: auto">Send</primary>
+  <div>
+    <h1 class="my-3 text-xl">Send email</h1>
+    <div class="mb-5 text-gray-700">
+      <label class="block mb-1" for="forms-helpTextCode">From</label>
+      <input
+        class="w-full h-10 py-6 px-4 text-base placeholder-gray-600 border rounded-md focus:outline-none"
+        @keyup.enter="send"
+        v-model="from"
+      />
     </div>
+    <div class="mb-5 text-gray-700">
+      <label class="block mb-1" for="forms-helpTextCode">Subject</label>
+      <input
+        class="w-full h-10 py-6 px-4 text-base placeholder-gray-600 border rounded-md focus:outline-none"
+        @keyup.enter="send"
+        v-model="subject"
+      />
+    </div>
+    <div class="mb-5 text-gray-700">
+      <label class="block mb-1" for="forms-helpTextCode">Message</label>
+      <textarea
+        class="border p-3 resize-y w-full rounded-md focus:outline-none"
+        v-model="text"
+        name=""
+        id=""
+        cols="30"
+        rows="10"
+      ></textarea>
+    </div>
+
+    <primary @click.native="send" style="margin-left: auto">Send</primary>
   </div>
 </template>
 <script>
@@ -50,36 +64,4 @@ export default {
   layout: 'dashboard',
 }
 </script>
-<style lang="scss" scoped>
-.dashboard {
-  padding: 15px;
-  max-width: 900px;
-  margin: 20px auto;
-  h1 {
-    margin-bottom: 1em;
-  }
-  .inputbox {
-    margin: 20px 0;
-    textarea {
-      resize: none;
-      width: 100%;
-      height: 100px;
-    }
-    .description {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    input {
-      width: 100%;
-    }
-    small {
-      padding: 6px;
-      border-radius: 6px;
-      display: block;
-      font-size: 16px;
-      color: grey;
-    }
-  }
-}
-</style>
+

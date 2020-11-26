@@ -1,16 +1,16 @@
 <template>
   <div
-    class="shadow-md p-3 rounded-lg border container mx-auto mt-20 max-w-xl px-6"
+    class="shadow-md p-3 rounded-md border container mx-auto mt-20 max-w-xl px-6"
   >
     <h1
-      class="p-5 transform -translate-y-10 rounded-lg text-gray-100 bg-gray-700 text-xl"
+      class="p-5 transform -translate-y-10 rounded-md text-gray-100 bg-gray-700 text-xl"
     >
       Admin login
     </h1>
     <div class="mb-5 text-gray-700">
       <label class="block mb-1" for="forms-helpTextCode">Email</label>
       <input
-        class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:outline-none"
+        class="w-full h-10 py-6 px-4 text-base placeholder-gray-600 border rounded-md focus:outline-none"
         @keyup.enter="login"
         v-model="email"
       />
@@ -18,7 +18,7 @@
     <div class="my-5 text-gray-700">
       <label class="block mb-1" for="forms-helpTextCode">Password</label>
       <input
-        class="w-full h-10 px-3 text-base placeholder-gray-600 border rounded-lg focus:outline-none"
+        class="w-full h-10 py-6 px-4 text-base placeholder-gray-600 border rounded-md focus:outline-none"
         type="password"
         @keyup.enter="login"
         v-model="password"

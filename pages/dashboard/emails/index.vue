@@ -1,7 +1,7 @@
 <template>
-  <div class="dashboard">
-    <h1>Emails</h1>
-    <div class="buttonbox">
+  <div class="">
+    <h1 class="my-3 text-xl">Emails</h1>
+    <div class="flex justify-between mb-5">
       <primary @click.native="$router.go(-1)">go back</primary>
       <NuxtLink to="/dashboard/emails/sendMail">
         <primary>Send email</primary>
@@ -14,13 +14,15 @@
         v-if="!emails.length && !$fetchState.pending"
         message="No emails found"
       />
+      <div v-if="emails.length && !$fetchState.pending">
+        <email
+          @delete="removeEmail"
+          v-for="email in emails"
+          :email="email"
+          :key="email._id"
+        />
+      </div>
     </transition>
-    <email
-      @delete="removeEmail"
-      v-for="email in emails"
-      :email="email"
-      :key="email._id"
-    />
   </div>
 </template>
 <script>
@@ -65,15 +67,3 @@ export default {
   layout: 'dashboard',
 }
 </script>
-<style lang="scss" scoped>
-.dashboard {
-  padding: 15px;
-  .buttonbox {
-    display: flex;
-    justify-content: space-between;
-  }
-  h1 {
-    margin-bottom: 1em;
-  }
-}
-</style>

@@ -69,7 +69,17 @@ export default {
 .fade-enter-active {
   transition: opacity 300ms;
 }
-
+.page-enter {
+  transform: translateX(30px);
+  opacity: 0;
+}
+.page-leave-to {
+  opacity: 0;
+}
+.page-enter-active,
+.page-leave-active {
+  transition: linear 200ms;
+}
 .layout-enter {
   opacity: 0;
   transform: scale(0.95);
