@@ -1,26 +1,32 @@
 <template>
   <div
-    :style="{
-      'border-left': $store.state.user === user._id ? '5px solid green' : '',
-    }"
-    class="user"
+    class="flex p-5 border relative shadow-md rounded-md my-5 flex-1 justify-between items-center"
   >
     <transition name="popup">
       <menuEdit :_id="user._id" @blur.native="menu = false" v-if="menu" />
     </transition>
-    <div class="imgbox">
+    <div
+      class="relative w-20 h-20 border rounded-full flex items-center justify-center border-gray-500"
+    >
       <picture v-if="user.image || user.image_webp">
         <img :src="user.image" type="image/png" />
-        <source :srcset="user.image_webp" type="image/webp" />
+        <source
+          class="w-full h-full absolute left-0 top-0"
+          :srcset="user.image_webp"
+          type="image/webp"
+        />
       </picture>
-      <UserIcon size="2x" style="color: #dadada" />
+      <UserIcon class="text-gray-500" size="2.5x" />
     </div>
-    <div class="infobox">
+    <div class="mr-auto ml-5">
       <p>Name: {{ user.author.name }}</p>
       <p>Bio: {{ user.author.bio }}</p>
     </div>
-    <div @click="menu = true" v-ripple class="menubox">
-      <MoreVerticalIcon class="menu" />
+    <div
+      @click="menu = true"
+      class="mb-auto cursor-pointer transition:bg duration-300 hover:bg-gray-200 rounded-full p-2"
+    >
+      <MoreVerticalIcon class="text-gray-500" />
     </div>
   </div>
 </template>
@@ -42,51 +48,4 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped>
-.user {
-  border: 1px solid #dadada;
-  border-radius: 6px;
-  margin: 15px 0;
-  padding: 15px;
-  flex: 1;
-  display: flex;
-  margin-right: 10px;
-  margin-bottom: 10px;
-  min-width: 300px;
-  position: relative;
-  &:last-child {
-    margin-right: 0;
-  }
-  .infobox {
-    margin: 0 auto 0 20px;
-  }
-  .imgbox {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    border: 1px solid #dadada;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    img {
-      object-fit: cover;
-      height: 100%;
-      width: 100%;
-      border-radius: 50%;
-    }
-  }
-  .menubox {
-    border-radius: 50%;
-    height: 40px;
-    width: 40px;
-    display: flex;
-    position: relative;
-    cursor: pointer;
-    .menu {
-      margin: auto;
-      color: grey;
-    }
-  }
-}
-</style>

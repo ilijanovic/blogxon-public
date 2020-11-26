@@ -5,42 +5,42 @@
       title="Overview"
       to="/dashboard/overview"
     >
-      <MonitorIcon size="2x" />
+      <MonitorIcon size="1.6x" />
     </NuxtLink>
     <NuxtLink
       class="hover:bg-gray-100 transition-all duration-200 rounded-md hover:text-gray-700 block m-2 p-3"
       title="Email"
       to="/dashboard/emails"
     >
-      <MailIcon size="2x" />
+      <MailIcon size="1.6x" />
     </NuxtLink>
     <NuxtLink
       class="hover:bg-gray-100 transition-all duration-200 rounded-md hover:text-gray-700 block m-2 p-3"
       title="Blogs"
       to="/dashboard/blogs"
     >
-      <BookIcon size="2x" />
+      <BookIcon size="1.6x" />
     </NuxtLink>
     <NuxtLink
       class="hover:bg-gray-100 transition-all duration-200 rounded-md hover:text-gray-700 block m-2 p-3"
       title="Subscriptions"
       to="/dashboard/subscriptions"
     >
-      <SendIcon size="2x" />
+      <SendIcon size="1.6x" />
     </NuxtLink>
     <NuxtLink
       class="hover:bg-gray-100 transition-all duration-200 rounded-md hover:text-gray-700 block m-2 p-3"
       title="Settings"
       to="/dashboard/settings"
     >
-      <SettingsIcon size="2x" />
+      <SettingsIcon size="1.6x" />
     </NuxtLink>
     <NuxtLink
       class="hover:bg-gray-100 transition-all duration-200 rounded-md hover:text-gray-700 block m-2 p-3"
       title="Logout"
       to="/dashboard/logout"
     >
-      <LogOutIcon size="2x" />
+      <LogOutIcon size="1.6x" />
     </NuxtLink>
   </div>
 </template>

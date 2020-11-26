@@ -1,6 +1,13 @@
 <template>
-  <div tabindex="0" ref="menubox" class="options">
-    <div @click="deleteUser" class="option">
+  <div
+    tabindex="0"
+    ref="menubox"
+    class="absolute right-0 focus:outline-none border shadow-md rounded-md top-0 w-40 m-5 bg-white"
+  >
+    <div
+      @click="deleteUser"
+      class="flex cursor-pointer hover:bg-gray-200 justify-between items-center p-2"
+    >
       <p>Delete</p>
       <TrashIcon size="1.2x" />
     </div>
@@ -34,23 +41,3 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped>
-.options {
-  right: 10px;
-  top: 15px;
-  position: absolute;
-  min-width: 150px;
-  z-index: 1;
-  border: 1px solid #dadada;
-  .option {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px;
-    background: white;
-    cursor: pointer;
-    &:hover {
-      background: #f5f6fa;
-    }
-  }
-}
-</style>

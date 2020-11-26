@@ -1,29 +1,37 @@
 <template>
-  <div class="author">
+  <div class="max-w-xl mx-auto my-10">
     <div
       style="display: flex; align-items: center; justify-content: space-between"
     >
-      <h1>Create user</h1>
+      <h1 class="my-5 text-xl">Create user</h1>
+    </div>
+    <div class="mb-5 text-gray-700">
+      <label class="block mb-1" for="forms-helpTextCode">Email</label>
+      <input
+        class="w-full h-10 py-6 px-4 text-base placeholder-gray-600 border rounded-md focus:outline-none"
+        @keyup.enter="create"
+        v-model="email"
+      />
+    </div>
+    <div class="mb-5 text-gray-700">
+      <label class="block mb-1" for="forms-helpTextCode">Password</label>
+      <input
+        class="w-full h-10 py-6 px-4 text-base placeholder-gray-600 border rounded-md focus:outline-none"
+        @keyup.enter="create"
+        v-model="password"
+      />
+    </div>
+    <div class="mb-5 text-gray-700">
+      <label class="block mb-1" for="forms-helpTextCode"
+        >Password confirm</label
+      >
+      <input
+        class="w-full h-10 py-6 px-4 text-base placeholder-gray-600 border rounded-md focus:outline-none"
+        @keyup.enter="create"
+        v-model="passwordConfirm"
+      />
     </div>
 
-    <div class="inputbox">
-      <div class="description">
-        <small>Email</small>
-      </div>
-      <input @keyup.enter="create" v-model="email" />
-    </div>
-    <div class="inputbox">
-      <div class="description">
-        <small>Password</small>
-      </div>
-      <input @keyup.enter="create" type="password" v-model="password" />
-    </div>
-    <div class="inputbox">
-      <div class="description">
-        <small>Password again</small>
-      </div>
-      <input @keyup.enter="create" type="password" v-model="passwordConfirm" />
-    </div>
     <primary
       :loading="loading"
       :disabled="loading"
@@ -77,61 +85,3 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-.author {
-  padding: 15px;
-  max-width: 600px;
-  width: 100%;
-  margin: 0 auto;
-  .inputbox {
-    margin: 20px 0;
-    textarea {
-      resize: none;
-      width: 100%;
-      height: 100px;
-    }
-    .description {
-      display: flex;
-      justify-content: space-between;
-    }
-    input {
-      width: 100%;
-    }
-    small {
-      padding: 6px;
-      border-radius: 6px;
-      display: block;
-      font-size: 16px;
-      color: grey;
-    }
-  }
-  .preview {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    border: 1px solid #dadada;
-    display: flex;
-    position: relative;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      border-radius: 50%;
-    }
-    svg {
-      margin: auto;
-      color: grey;
-    }
-    input {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      opacity: 0;
-      cursor: pointer;
-    }
-  }
-}
-</style>

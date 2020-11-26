@@ -1,6 +1,6 @@
 <template>
   <div
-    class="relative px-4 py-3 leading-normal text-red-700 bg-red-100 rounded-lg"
+    class="relative my-5 px-4 py-3 leading-normal text-red-700 bg-red-100 rounded-lg"
     role="alert"
   >
     <span class="absolute inset-y-0 left-0 flex items-center ml-4">

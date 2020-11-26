@@ -1,37 +1,40 @@
 <template>
-  <div class="blog">
-    <h1>Create blog post</h1>
-    <div class="inputbox">
-      <div class="description">
-        <small>Title</small>
-        <small>Optional length: 50-60 characters</small>
-        <small
+  <div class="max-w-screen-md mx-auto">
+    <h1 class="my-5 text-xl">Create blog post</h1>
+    <div class="my-5">
+      <div class="flex justify-between">
+        <label class="block mb-1">Title</label>
+        <label class="block mb-1">Optional length: 50-60 characters</label>
+
+        <label
+          class="block mb-1"
           :class="{
             green: titleLength >= 50 && titleLength <= 60,
             red: titleLength >= maxTitleLength,
           }"
-          >{{ titleLength }} / {{ maxTitleLength }}</small
+          >{{ titleLength }} / {{ maxTitleLength }}</label
         >
       </div>
       <input
         :style="{
           'border-color': titleLength >= 50 && titleLength <= 60 ? 'green' : '',
         }"
+        class="w-full h-10 py-6 px-4 text-base placeholder-gray-600 border rounded-md focus:outline-none"
         @keyup="checkTitleLength"
         @change="checkTitleLength"
         v-model="title"
       />
     </div>
-    <div class="inputbox">
-      <div class="description">
-        <small>Description</small>
-        <small>Optional length: 120-160 characters</small>
-        <small
+    <div class="my-5">
+      <div class="flex justify-between">
+        <label class="block mb-1">Description</label>
+        <label class="block mb-1">Optional length: 120-160 characters</label>
+        <label
           :class="{
             red: descriptionLength >= maxDescriptionLength,
             green: descriptionLength >= 120 && descriptionLength <= 160,
           }"
-          >{{ descriptionLength }} / {{ maxDescriptionLength }}</small
+          >{{ descriptionLength }} / {{ maxDescriptionLength }}</label
         >
       </div>
       <textarea
@@ -39,47 +42,63 @@
           'border-color':
             descriptionLength >= 120 && descriptionLength <= 160 ? 'green' : '',
         }"
+        class="border p-3 resize-y w-full rounded-md focus:outline-none"
         @keyup="checkDescriptionLength"
         @change="checkDescriptionLength"
         v-model="description"
       ></textarea>
     </div>
-    <div class="inputbox">
-      <div class="description">
-        <small>Keywords</small>
-        <small>{{ keywordsLength }} / {{ maxKeywords }}</small>
+    <div class="my-5">
+      <div class="flex justify-between">
+        <label class="block mb-1">Keywords</label>
+        <label class="block mb-1"
+          >{{ keywordsLength }} / {{ maxKeywords }}</label
+        >
       </div>
-      <div class="keywordsbox">
+      <div class="flex justify-between items-center">
         <input
+          class="w-full h-10 py-6 px-4 text-base placeholder-gray-600 border rounded-md focus:outline-none"
           @keydown.space="addKeyword"
           @keyup.enter="addKeyword"
           v-model="keyword"
         />
-        <primary @click.native="addKeyword" style="height: fit-content"
-          >Add</primary
-        >
+        <primary class="ml-5" @click.native="addKeyword">Add</primary>
       </div>
-      <div style="display: flex; flex-flow: wrap">
-        <div v-for="(keyword, i) in keywords" :key="keyword" class="keyword">
+      <div class="flex flex-wrap my-5">
+        <div
+          v-for="(keyword, i) in keywords"
+          :key="keyword"
+          class="flex border rounded-md mr-2 mb-2 p-2 items-center"
+        >
           <p>{{ keyword }}</p>
-          <XIcon @click="remove(i)" size="1.2x" />
+          <XIcon @click="remove(i)" class="ml-2 cursor-pointer" size="1.2x" />
         </div>
       </div>
-      <div class="inputbox">
-        <small>Thumbnail</small>
+      <div class="my-5">
+        <label class="block mb-1">Thumbnail</label>
         <div
           :style="{ width: imageWidth + 'px', height: imageHeight + 'px' }"
-          class="preview"
+          class="border rounded-md flex relative"
         >
-          <img @load="freeMemory" v-if="image" :src="image" />
-          <input v-if="!image" type="file" @change="preview" />
-          <ImageIcon v-if="!image" size="4x" />
+          <img
+            class="bg-cover absolute w-full h-full top-0 left-0"
+            @load="freeMemory"
+            v-if="image"
+            :src="image"
+          />
+          <input
+            class="cursor-pointer w-full h-full absolute top-0 left-0 opacity-0"
+            v-if="!image"
+            type="file"
+            @change="preview"
+          />
+          <ImageIcon class="m-auto text-gray-500" v-if="!image" size="4x" />
         </div>
       </div>
     </div>
-    <div class="inputbox">
+    <div class="my-5">
       <div class="description">
-        <small>Structured data</small>
+        <label class="block mb-1">Structured data</label>
       </div>
       <dropdown @selected="selectedOption" :value="options" />
     </div>
@@ -228,94 +247,3 @@ export default {
   layout: 'dashboard',
 }
 </script>
-<style lang="scss" scoped>
-.blog {
-  padding: 15px;
-  max-width: 700px;
-  margin: 0 auto;
-  .keywordsbox {
-    display: flex;
-    align-items: center;
-    button {
-      margin-left: 20px;
-    }
-  }
-  .keyword {
-    display: inline-block;
-    border: 1px solid #dadada;
-    margin-right: 6px;
-    margin-bottom: 6px;
-    border-radius: 6px;
-    padding: 6px;
-    display: flex;
-    width: fit-content;
-    align-items: center;
-    svg {
-      color: red;
-      margin-left: 5px;
-      cursor: pointer;
-    }
-  }
-  .inputbox {
-    margin: 20px 0;
-    textarea {
-      resize: none;
-      width: 100%;
-      height: 100px;
-    }
-    .description {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    input {
-      width: 100%;
-    }
-    small {
-      padding: 6px;
-      border-radius: 6px;
-      display: block;
-      font-size: 16px;
-      color: grey;
-    }
-  }
-}
-.green {
-  background: green;
-  color: white !important;
-}
-.red {
-  background: red;
-  color: white !important;
-}
-.preview {
-  max-width: 100%;
-  position: relative;
-  border-radius: 6px;
-  border: 1px solid #dadada;
-  svg {
-    color: #dadada;
-    margin: auto;
-  }
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    left: 0;
-    top: 0;
-    border-radius: 6px;
-  }
-  display: flex;
-  input {
-    opacity: 0;
-    position: absolute;
-    margin: 0;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-  }
-}
-</style>

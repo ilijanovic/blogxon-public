@@ -1,29 +1,49 @@
 <template>
-  <div class="usersbox">
-    <h2>Author settings</h2>
+  <div class="shadow-md my-5 p-5 max-w-xl rounded-md border">
+    <h2 class="text-xl my-5">Author settings</h2>
 
-    <div class="settings">
-      <div class="settingbox">
-        <small>Name</small>
-        <input @keyup.enter="save" v-model="author.name" />
-      </div>
-      <div class="settingbox">
-        <small>Bio</small>
-        <textarea v-model="author.bio"></textarea>
-      </div>
-      <div class="settingbox">
-        <small>Github URL</small>
-        <input @keyup.enter="save" v-model="author.githubLink" />
-      </div>
-      <div class="settingbox">
-        <small>Stackoverflow URL</small>
-        <input @keyup.enter="save" v-model="author.stackoverflowLink" />
-      </div>
-      <div class="settingbox">
-        <small>Twitter URL</small>
-        <input @keyup.enter="save" v-model="author.twitterLink" />
-      </div>
+    <div class="mb-5 text-gray-700">
+      <label class="block mb-1" for="forms-helpTextCode">Name</label>
+      <input
+        class="w-full h-10 py-6 px-4 text-base placeholder-gray-600 border rounded-md focus:outline-none"
+        @keyup.enter="save"
+        v-model="author.name"
+      />
     </div>
+    <div class="mb-5 text-gray-700">
+      <label class="block mb-1" for="forms-helpTextCode">Bio</label>
+      <input
+        class="w-full h-10 py-6 px-4 text-base placeholder-gray-600 border rounded-md focus:outline-none"
+        v-model="author.bio"
+      />
+    </div>
+    <div class="mb-5 text-gray-700">
+      <label class="block mb-1" for="forms-helpTextCode">Github URL</label>
+      <input
+        class="w-full h-10 py-6 px-4 text-base placeholder-gray-600 border rounded-md focus:outline-none"
+        @keyup.enter="save"
+        v-model="author.githubLink"
+      />
+    </div>
+    <div class="mb-5 text-gray-700">
+      <label class="block mb-1" for="forms-helpTextCode"
+        >Stackoverflow URL</label
+      >
+      <input
+        class="w-full h-10 py-6 px-4 text-base placeholder-gray-600 border rounded-md focus:outline-none"
+        @keyup.enter="save"
+        v-model="author.stackoverflowLink"
+      />
+    </div>
+    <div class="mb-5 text-gray-700">
+      <label class="block mb-1" for="forms-helpTextCode">Twitter URL</label>
+      <input
+        class="w-full h-10 py-6 px-4 text-base placeholder-gray-600 border rounded-md focus:outline-none"
+        @keyup.enter="save"
+        v-model="author.twitterLink"
+      />
+    </div>
+
     <div class="preview">
       <img :src="author.image" />
     </div>
@@ -92,45 +112,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-.inputbox {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 0 0 10px -8px black;
-  border: 1px solid #dadada;
-  border-radius: 6px;
-  padding: 15px;
-  .title {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex: 1;
-  }
-}
-.usersbox {
-  box-shadow: 0 0 10px -8px black;
-  border: 1px solid #dadada;
-  border-radius: 6px;
-  padding: 15px;
-  margin-top: 20px;
-  max-width: 500px;
-  .users {
-    display: flex;
-    flex-flow: wrap;
-    justify-content: center;
-  }
-}
-.settingbox {
-  margin-top: 1em;
-
-  input {
-    width: 100%;
-  }
-  textarea {
-    resize: none;
-    width: 100%;
-  }
-}
-</style>
