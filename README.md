@@ -5,7 +5,7 @@ Its build up on Nuxt.js in universal mode. Its backend is powered by Express.js 
 
 It uses Tailwind for the UI
 
-**Please do not use this software for now. Is not finished yet**
+**Please do not use this software for now. Is not finished yet. There are still bugs in it and the API might change in the future**
 
 ## Setup
 
@@ -95,7 +95,7 @@ This route would be available under `/api/hello`
 
 ## Blogxon services
 
-You might saw the file `blogxo.ts` inside the `/api/external` directory
+You might saw the file `blogxon.ts` inside the `/api/external` directory
 
 This file contains alot of classes that provides methods to help you at development.
 
