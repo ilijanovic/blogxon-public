@@ -67,7 +67,13 @@ You can fetch an blog by its mongodb ID or slug
 ```javascript
 $blogxon.getBlogById(id)
 $blogxon.getBlogBySlug(slug)
+```
 
+## Web push notification
+
+To subscribe to web push notification you need to ask for permission and then subscribe
+
+```javascript
 /**
  * Asks user for permission to send notification
  * @return Resolves true if granted otherwise false
