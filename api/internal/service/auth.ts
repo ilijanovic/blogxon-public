@@ -4,7 +4,7 @@ import { adminService } from './admin'
 import { userService } from "./user"
 import { Request, Response, NextFunction } from "express"
 /**
- * Checks if the request is allowed to move to the next middlewareS
+ * Checks if the request is allowed to move to the next middlewares
  *
  * @param {Object} req - Request object
  * @param {Object} res - Response object

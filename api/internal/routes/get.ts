@@ -55,7 +55,11 @@ router.get('/blogs', <RequestHandler>blogController.getBlogsHandler)
  */
 router.get('/getBlog/:_id', <RequestHandler>blogController.getBlogHandler)
 
-
+/**
+ * @route   /api/internal/getBlogBySlug/:slug
+ * @type    GET
+ * @desc    Gets blog by slug
+ */
 router.get("/getBlogBySlug/:slug", <RequestHandler>blogController.getBlogBySlugHandler)
 
 /**
@@ -65,16 +69,48 @@ router.get("/getBlogBySlug/:slug", <RequestHandler>blogController.getBlogBySlugH
  */
 router.get("/getAuthors", <RequestHandler>authService.authentication, <RequestHandler>userController.getAuthorsHandler)
 
+/**
+ * @route   /api/internal/getUsers
+ * @type    GET
+ * @desc    Gets all users
+ */
 router.get("/getUsers", <RequestHandler>authService.authentication, <RequestHandler>userController.getUsersHandler)
 
-
+/**
+ * @route   /api/internal/getAuthor
+ * @type    GET
+ * @desc    Gets current author
+ */
 router.get("/getAuthor", <RequestHandler>authService.authentication, <RequestHandler>userController.getAuthorHandler)
 
+/**
+ * @route   /api/internal/getStatistics
+ * @type    GET
+ * @desc    Returns statistics like views and likes
+ */
 router.get("/getStatistics", <RequestHandler>authService.authentication, <RequestHandler>adminController.getStatisticsHandler)
 
+
+/**
+ * @route   /api/internal/getViewsChartData
+ * @type    GET
+ * @desc    Gets data for the chart
+ */
 router.get("/getViewsChartData", <RequestHandler>authService.authentication, <RequestHandler>adminController.getViewsChartDataHandler)
 
+
+/**
+ * @route   /api/internal/getThumbnails
+ * @type    GET
+ * @desc    Gets all thumbnails
+ */
 router.get("/getThumbnails", <RequestHandler>authService.authentication, <RequestHandler>blogController.getBlogThumbnails)
 
+
+/**
+ * @route   /api/internal/getBlog/:_id
+ * @type    GET
+ * @desc    Gets all badges
+ */
 router.get("/getBadges", <RequestHandler>authService.authentication, <RequestHandler>subscriptionController.getBadgesHandler)
 export default router

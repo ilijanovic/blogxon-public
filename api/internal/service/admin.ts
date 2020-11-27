@@ -2,6 +2,7 @@ import User from '../model/user'
 import { AuthorInterface, UserInterface } from "../../../types"
 
 class AdminService {
+
   public getAdmin(): Promise<UserInterface | null> {
     return User.findOne({ role: 'admin' }).exec()
   }
