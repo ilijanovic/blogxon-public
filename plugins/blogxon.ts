@@ -30,7 +30,7 @@ export default function (context: Context, inject: Inject) {
       }
       const subscribeOptions = {
         userVisibleOnly: true,
-        applicationServerKey: urlBase64ToUint8Array(PUBLIC_KEY),
+        applicationServerKey: urlB64ToUint8Array(PUBLIC_KEY),
       }
       let subscription = await registration.pushManager.subscribe(
         subscribeOptions
@@ -49,16 +49,17 @@ export default function (context: Context, inject: Inject) {
   })
 }
 
-function urlBase64ToUint8Array(base64String: string) {
-  var padding = '='.repeat((4 - (base64String.length % 4)) % 4)
-  var base64 = (base64String + padding)
+function urlB64ToUint8Array(base64String: string) {
+  const padding = '='.repeat((4 - base64String.length % 4) % 4);
+  const base64 = (base64String + padding)
     .replace(/\-/g, '+')
-    .replace(/_/g, '/')
+    .replace(/_/g, '/');
 
-  var rawData = window.atob(base64)
-  var outputArray = new Uint8Array(rawData.length)
-  for (var i = 0; i < rawData.length; ++i) {
-    outputArray[i] = rawData.charCodeAt(i)
+  const rawData = window.atob(base64);
+  const outputArray = new Uint8Array(rawData.length);
+
+  for (let i = 0; i < rawData.length; ++i) {
+    outputArray[i] = rawData.charCodeAt(i);
   }
-  return outputArray
+  return outputArray;
 }
