@@ -38,10 +38,8 @@ export default function (context: Context, inject: Inject) {
       )
       try {
         console.log(url)
-        return fetch({
-          method: "post",
-          url: `${url}/api/internal/subscribe`,
-          //@ts-expect-error
+        return fetch(`${url}/api/internal/subscribe`, {
+          method: "POST",
           body: JSON.stringify(subscription)
         })
       } catch (err) {
