@@ -3,8 +3,7 @@ import webpush from "web-push"
 import Badge from "../model/badge"
 import { SubscriptionInterface, ModelSubscriptionInterface, NotificationInterface, BadgeInterface } from "../../../types"
 import mongoose from "mongoose"
-import { config } from '~/config'
-
+import { config } from "../../../config"
 class SubscriptionService {
   public subscribe(sub: SubscriptionInterface): Promise<ModelSubscriptionInterface> {
     let subscription = new Subscription({ ...sub, })
