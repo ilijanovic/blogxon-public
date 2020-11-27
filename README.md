@@ -3,6 +3,8 @@
 Blogxon is a simple headless CMS system. Its made to be developer friendly as easy to use.
 Its build up on Nuxt.js in universal mode. Its backend is powered by Express.js and as database it uses MongoDB.
 
+It uses Tailwind for the UI
+
 **Please do not use this software for now. Is not finished yet**
 
 ## Setup
@@ -54,7 +56,7 @@ export default {
 }
 ```
 
-### Fetch blog by ID, slu
+### Fetch blog by ID or slug
 
 You can fetch an blog by its mongodb ID or slug
 
@@ -62,3 +64,49 @@ You can fetch an blog by its mongodb ID or slug
 $blogxon.getBlogById(id)
 $blogxon.getBlogBySlug(slug)
 ```
+
+## Custom REST API
+
+You can add your own endpoints. Your code should be under `/api/external`
+The `/api/internal` folder should not be changed.
+
+### Add custom routes
+
+To add custom routes you need to navigate to `/api/external/routes`.
+Depending what method you use, you choose between POST and GET file
+
+Your route has by default and `/api` prefix.
+
+`/api/external/routes/get.js`
+
+```javascript
+import { Router } from 'express'
+
+let router = Router()
+
+router.get('/hello', (req, res) => {
+  res.send('hello')
+})
+
+export default router
+```
+
+This route would be available under `/api/hello`
+
+## Blogxon helpers
+
+You might saw the file `blogxo.ts` inside the `/api/external` directory
+
+This file contains alot of classes that provides methods to help you at development.
+
+Example:
+
+```javascript
+import { blogService } from '../blogxon'
+
+blogService.getBlogs().then((blogs) => {
+  console.log(blogs)
+})
+```
+
+Take a look into the `blogxon.ts` file to see what classes are available. If you use VSC editor IntelliSense will help you at coding by giving you hints.
