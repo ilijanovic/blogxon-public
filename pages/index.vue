@@ -29,10 +29,10 @@
 <script>
 import primary from '@/components/dashboard/button/primary'
 export default {
-  async asyncData({ $blogxon }) {
-    let blogs = await $blogxon.getBlogs()
-    return { blogs }
+  async fetch() {
+    this.blogs = await this.$blogxon.getBlogs()
   },
+  data: () => ({ blogs: [] }),
   methods: {
     async subscribe() {
       try {
