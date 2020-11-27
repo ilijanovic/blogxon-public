@@ -23,6 +23,7 @@ export default function (context: Context, inject: Inject) {
       return permissionResult === 'granted'
     },
     async subscribe(swPath: string = "/sw.js") {
+      let url = this.url;
       let registration = await navigator.serviceWorker.register(swPath)
       const PUBLIC_KEY = process.env.VAPID_PUBLIC
       if (!PUBLIC_KEY) {
@@ -38,7 +39,7 @@ export default function (context: Context, inject: Inject) {
       try {
         await fetch({
           method: "post",
-          url: `${this.url}/api/internal/subscribe`,
+          url: `${url}/api/internal/subscribe`,
           //@ts-expect-error
           body: JSON.stringify(subscription)
         })
