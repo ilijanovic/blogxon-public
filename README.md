@@ -27,6 +27,10 @@ It will display you the public and private key.
 
 ## Start application
 
+First you need to install all dependencies with:
+
+`npm i`
+
 To start the application type in:
 
 `npm run dev`
