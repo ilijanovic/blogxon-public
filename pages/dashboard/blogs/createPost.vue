@@ -103,8 +103,8 @@
       <dropdown @selected="selectedOption" :value="options" />
     </div>
     <div class="inputbox">
-      <div class="description">
-        <small>Markdown editor</small>
+      <div class="flex justify-between items-center my-3">
+        <label class="block mb-1">Markdown editor</label>
         <primary @click.native="textPreview = !textPreview"
           >Toggle preview</primary
         >
