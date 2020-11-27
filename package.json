@@ -10,6 +10,7 @@
     "vapid": "node generateKeys.js"
   },
   "dependencies": {
+    "@nuxt/http": "^0.6.0",
     "@nuxt/typescript-runtime": "^2.0.0",
     "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/markdownit": "^1.2.10",

@@ -73,6 +73,16 @@ class BlogController {
       return res.status(500).json({ message: "Something went wrong" })
     }
   }
+  public async getBlogBySlugHandler(req: Request, res: Response, next: NextFunction) {
+    let { slug } = req.params
+    try {
+      let blog = await blogService.findBlogBySlug(slug)
+      return res.status(200).json(blog)
+    } catch (err) {
+      await errorService.writeErrorLog(err, "getBlogBySlugHandler")
+      return res.status(500).json({ message: "Something went wrong" })
+    }
+  }
 }
 
 export const blogController: BlogController = new BlogController()

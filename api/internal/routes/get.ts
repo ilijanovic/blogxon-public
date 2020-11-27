@@ -14,49 +14,52 @@ let router = Router()
 
 
 /**
- * @route   /internal/api/adminExist
+ * @route   /api/internal/adminExist
  * @type    GET
  * @desc    Checks if an admin exist
  */
 router.get('/adminExist', <RequestHandler>adminController.adminExistHandler)
 
 /**
- * @route   /internal/api/dashboardOverview
+ * @route   /api/internal/dashboardOverview
  * @type    GET
  * @desc    Gets the statistics of your Emails, Blogs and Subscriptions
  */
 router.get('/dashboardOverview', <RequestHandler>authService.authentication, <RequestHandler>adminController.dashboardOverviewHandler)
 
 /**
- * @route   /internal/api/emails
+ * @route   /api/internal/emails
  * @type    GET
  * @desc    Gets your emails
  */
 router.get('/emails', <RequestHandler>authService.authentication, <RequestHandler>emailController.getEmailsHandler)
 
 /**
- * @route   /internal/api/adminAuthor
+ * @route   /api/internal/adminAuthor
  * @type    GET
  * @desc    Get admin author
  */
 router.get('/adminAuthor', <RequestHandler>authService.authentication, <RequestHandler>adminController.getAdminAuthorHandler)
 
 /**
- * @route   /internal/api/blogs
+ * @route   /api/internal/blogs
  * @type    GET
  * @desc    Get blogs
  */
-router.get('/blogs', <RequestHandler>authService.authentication, <RequestHandler>blogController.getBlogsHandler)
+router.get('/blogs', <RequestHandler>blogController.getBlogsHandler)
 
 /**
- * @route   /internal/api/getBlog/:_id
+ * @route   /api/internal/getBlog/:_id
  * @type    GET
  * @desc    Gets blog by ID
  */
-router.get('/getBlog/:_id', <RequestHandler>authService.authentication, <RequestHandler>blogController.getBlogHandler)
+router.get('/getBlog/:_id', <RequestHandler>blogController.getBlogHandler)
+
+
+router.get("/getBlogBySlug/:slug", <RequestHandler>blogController.getBlogBySlugHandler)
 
 /**
- * @route   /internal/api/getAuthors
+ * @route   /api/internal/getAuthors
  * @type    GET
  * @desc    Gets all authors
  */

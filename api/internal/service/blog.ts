@@ -4,7 +4,7 @@ import { errorService } from './error'
 import { utilsService } from './utils'
 import { eventEmitter } from '../subscribers/blog'
 import mongoose from "mongoose"
-import { BlogInterface, BlogQueryInterface } from "../../../types"
+import { BlogQueryInterface } from "../../../types"
 
 class BlogService {
 
