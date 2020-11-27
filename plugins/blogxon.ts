@@ -8,15 +8,15 @@ import mongoose from "mongoose"
 
 export default function (context: Context, inject: Inject) {
   inject('blogxon', {
-    url: process.env.NODE_ENV !== "production" ? "http://localhost" : config.domain,
+    url: process.env.NODE_ENV !== "production" ? `http://localhost:${config.port}` : config.domain,
     getBlogs(): Promise<Omit<BlogQueryInterface, "content">[]> {
-      return fetch(`${this.url}:${config.port}/api/internal/blogs`).then(res => res.json())
+      return fetch(`${this.url}/api/internal/blogs`).then(res => res.json())
     },
     getBlogById(_id: string | mongoose.Types.ObjectId): Promise<BlogQueryInterface> {
-      return fetch(`${this.url}:${config.port}/api/internal/getBlog/${_id}`).then(res => res.json())
+      return fetch(`${this.url}/api/internal/getBlog/${_id}`).then(res => res.json())
     },
     getBlogBySlug(slug: string): Promise<BlogQueryInterface> {
-      return fetch(`${this.url}:${config.port}/api/internal/getBlogBySlug/${slug}`).then(res => res.json())
+      return fetch(`${this.url}/api/internal/getBlogBySlug/${slug}`).then(res => res.json())
     },
     askPermission: async (): Promise<Boolean> => {
       const permissionResult = await Notification.requestPermission()
@@ -38,7 +38,7 @@ export default function (context: Context, inject: Inject) {
       try {
         fetch({
           method: "post",
-          url: `${this.url}:${config.port}/api/internal/subscribe`,
+          url: `${this.url}/api/internal/subscribe`,
           //@ts-expect-error
           body: JSON.stringify(subscription)
         })
