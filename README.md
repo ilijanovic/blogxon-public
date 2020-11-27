@@ -60,6 +60,8 @@ export default {
 }
 ```
 
+In components / pages you can use it with `this.$blogxon`
+
 ### Fetch blog by ID or slug
 
 You can fetch an blog by its mongodb ID or slug
