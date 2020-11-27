@@ -37,7 +37,8 @@ export default function (context: Context, inject: Inject) {
         subscribeOptions
       )
       try {
-        await fetch({
+        console.log(url)
+        return fetch({
           method: "post",
           url: `${url}/api/internal/subscribe`,
           //@ts-expect-error
