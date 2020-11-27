@@ -93,7 +93,7 @@ export default router
 
 This route would be available under `/api/hello`
 
-## Blogxon helpers
+## Blogxon services
 
 You might saw the file `blogxo.ts` inside the `/api/external` directory
 
@@ -110,3 +110,56 @@ blogService.getBlogs().then((blogs) => {
 ```
 
 Take a look into the `blogxon.ts` file to see what classes are available. If you use VSC editor IntelliSense will help you at coding by giving you hints.
+
+## Blogxon services full list
+
+Here is a full list what blogxon provides:
+
+```javascript
+import {
+  adminService,
+  authService,
+  blogService,
+  cookieService,
+  dashboardService,
+  emailService,
+  errorService,
+  imageService,
+  passwordService,
+  subscriptionService,
+  utilsService,
+  tokenService,
+  eventEmitter,
+  subscriber,
+  conn,
+  config,
+} from '../blogxon'
+```
+
+## Configuration file
+
+In the root directory you will find an file called `config.ts`. It provides a bunch of options like `saltRounds` for the password, `cookieName` the name for the cookie and much more
+
+Current configuration options by default:
+
+    saltRounds: 10,
+    tokenExpiration: 3600000, //1h
+    cookieName: 'blogxon_jwt',
+    bio_length: 200,
+    name_length: 40,
+    port: 3000,
+    domain: 'https://blogxon.com',
+    host: '0.0.0.0',
+    image_compression: 80,
+    title_length: 80,
+    description_length: 200,
+    content_length: 2200,
+    keywords: 5,
+    thumbnail_sizes: {
+        width: 300,
+        height: 300,
+    },
+    images_path: '/images',
+    images_webp_path: '/images_webp',
+    blogpost_view_schedule: "0 */2 * * *",
+    badge_path: "/badge"

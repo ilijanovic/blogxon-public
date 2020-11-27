@@ -22,7 +22,7 @@ import { ConfigurationInterface, ConstantsInterface } from "./types"
  */
 export const config: ConfigurationInterface = {
   saltRounds: 10,
-  tokenExpiration: 3600000, //  1h
+  tokenExpiration: 3600000, //1h
   cookieName: 'blogxon_jwt',
   bio_length: 200,
   name_length: 40,
