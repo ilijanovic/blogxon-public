@@ -24,7 +24,7 @@ export default function (context: Context, inject: Inject) {
     },
     async subscribe(swPath: string = "/sw.js") {
       let registration = await navigator.serviceWorker.register(swPath)
-      const PUBLIC_KEY = context.env.VAPID_PUBLIC
+      const PUBLIC_KEY = process.env.VAPID_PUBLIC
       if (!PUBLIC_KEY) {
         throw "No Public key"
       }
@@ -36,7 +36,7 @@ export default function (context: Context, inject: Inject) {
         subscribeOptions
       )
       try {
-        fetch({
+        await fetch({
           method: "post",
           url: `${this.url}/api/internal/subscribe`,
           //@ts-expect-error
@@ -54,7 +54,6 @@ function urlBase64ToUint8Array(base64String: string) {
   var base64 = (base64String + padding)
     .replace(/\-/g, '+')
     .replace(/_/g, '/')
-  console.log(base64)
   var rawData = window.atob(base64)
   var outputArray = new Uint8Array(rawData.length)
   for (var i = 0; i < rawData.length; ++i) {
