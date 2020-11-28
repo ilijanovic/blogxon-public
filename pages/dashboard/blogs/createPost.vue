@@ -137,7 +137,6 @@ import primary from '@/components/dashboard/button/primary'
 import { XIcon, ImageIcon } from 'vue-feather-icons'
 import dropdown from '@/components/dashboard/dropdowns/dashboardDropdown'
 import mdPreview from '@/components/dashboard/mdPreview'
-
 import errorModal from '@/components/dashboard/modals/error'
 export default {
   data() {

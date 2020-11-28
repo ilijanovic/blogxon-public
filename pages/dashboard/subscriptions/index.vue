@@ -57,7 +57,10 @@
           />
         </transition>
         <div class="flex items-center h-full" @click="selectBadge(i)">
-          <img :src="badge.path" />
+          <img
+            class="w-full rounded-md h-full object-cover"
+            :src="badge.path"
+          />
         </div>
       </div>
       <div

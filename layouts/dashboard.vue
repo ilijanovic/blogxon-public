@@ -27,13 +27,6 @@ export default {
 }
 </script>
 <style lang="scss">
-:root {
-  --dark: rgba(52, 73, 94, 1);
-  --light-hover: rgba(44, 62, 80, 0.4);
-  --dark-touch: rgba(44, 62, 80, 1);
-  --navi: rgba(52, 73, 94, 0.9);
-  --breakpoint: 500px;
-}
 
 .slideIn-enter,
 .slideIn-leave-to {
