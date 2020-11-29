@@ -1,11 +1,11 @@
 <template>
-  <div class="box">
-    <div :class="{ open }" class="dropdown">
+  <div class="max-w-xs border rounded-md">
+    <div :class="{ open }">
       <div
         @blur="open = false"
         tabindex="0"
         @click="openDrop($event)"
-        class="selectbox"
+        class="flex justify-between p-3 outline-none cursor-pointer items-center"
       >
         <p>{{ selected }}</p>
         <ChevronDownIcon :style="{ transform: open ? 'rotate(180deg)' : '' }" />
@@ -16,7 +16,7 @@
         @click.prevent="select(option)"
         v-for="option in value"
         :key="option"
-        class="option"
+        class="flex justify-between hover:bg-gray-200 cursor-pointer p-3 items-center"
         @mousedown.prevent=""
       >
         <p>{{ option }}</p>
@@ -56,49 +56,3 @@ export default {
   },
 }
 </script>
-<style lang="scss" scoped>
-.box {
-  width: 100%;
-  max-width: 300px;
-  position: relative;
-}
-.dropdown {
-  border: 1px solid #dadada;
-
-  border-radius: 6px;
-  .selectbox {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    cursor: pointer;
-    padding: 15px;
-    border-radius: 6px;
-    &:hover {
-      background: #f5f6fa;
-    }
-  }
-}
-.options {
-  position: absolute;
-  width: 100%;
-}
-.option {
-  padding: 15px;
-  background: white;
-  cursor: pointer;
-  &:hover {
-    background: #f5f6fa;
-  }
-  border-left: 1px solid #dadada;
-  border-right: 1px solid #dadada;
-  &:last-child {
-    border-radius: 0 0 6px 6px;
-    border-bottom: 1px solid #dadada;
-  }
-}
-
-.open {
-  border-bottom: none;
-  border-radius: 6px 6px 0 0;
-}
-</style>

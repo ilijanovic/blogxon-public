@@ -46,7 +46,7 @@ router.get('/adminAuthor', <RequestHandler>authService.authentication, <RequestH
  * @type    GET
  * @desc    Get blogs
  */
-router.get('/blogs', <RequestHandler>blogController.getBlogsHandler)
+router.get('/blogs/:limit?/:skip?', <RequestHandler>blogController.getBlogsHandler)
 
 /**
  * @route   /api/internal/getBlog/:_id

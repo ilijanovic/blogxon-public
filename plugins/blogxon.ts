@@ -4,8 +4,7 @@
 import { BlogQueryInterface } from "~/types"
 import { config } from "@/config"
 import mongoose from "mongoose"
-import { Context, Plugin } from '@nuxt/types'
-
+import { Context } from '@nuxt/types'
 import Vue from "vue"
 declare module "vue/types/vue" {
   interface Vue {
@@ -19,8 +18,8 @@ declare module '@nuxt/types' {
 }
 const blogxonPlugin: BlogxonPluginInterface = {
   url: process.env.NODE_ENV !== "production" ? `http://localhost:${config.port}` : config.domain,
-  getBlogs(): Promise<Omit<BlogQueryInterface, "content">[]> {
-    return fetch(`${this.url}/api/internal/blogs`).then(res => res.json())
+  getBlogs(limit?: number, skip?: number): Promise<Omit<BlogQueryInterface, "content">[]> {
+    return fetch(`${this.url}/api/internal/blogs/${limit}/${skip}`).then(res => res.json())
   },
   getBlogById(_id: string | mongoose.Types.ObjectId): Promise<BlogQueryInterface> {
     return fetch(`${this.url}/api/internal/getBlog/${_id}`).then(res => res.json())
@@ -32,6 +31,7 @@ const blogxonPlugin: BlogxonPluginInterface = {
     const permissionResult = await Notification.requestPermission()
     return permissionResult === 'granted'
   },
+
   async subscribe(swPath: string = "/sw.js") {
     let url = this.url;
     let registration = await navigator.serviceWorker.register(swPath)
@@ -85,8 +85,7 @@ interface BlogxonPluginInterface {
   getBlogs: Function,
   getBlogById: Function,
   getBlogBySlug: Function,
-  url: string,
+  readonly url: string,
   askPermission: Function,
   subscribe: Function,
-
 }

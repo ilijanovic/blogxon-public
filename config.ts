@@ -34,7 +34,7 @@ export const config: ConfigurationInterface = {
   image_compression: 80,
   title_length: 80,
   description_length: 200,
-  content_length: 2200,
+  content_length: 4000,
   keywords: 5,
   thumbnail_sizes: {
     width: 300,

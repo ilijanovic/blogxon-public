@@ -8,8 +8,27 @@ import { PostUploadInterface } from '../../../types'
 
 class BlogController {
   public async getBlogsHandler(req: Request, res: Response, next: NextFunction): Promise<Response> {
-    let blogs = await blogService.getBlogs()
-    return res.status(200).json(blogs)
+    let { skip, limit } = req.params
+    let skipped;
+    let limited;
+    if (typeof skip !== "number") {
+      skipped = isNaN(+skip) ? undefined : +skip
+    }
+    if (typeof limit !== "number") {
+      limited = isNaN(+limit) ? undefined : +limit
+      if (typeof limited === "number") {
+        if (limited <= 0) {
+          return res.status(400).json({ message: "Limit must be greater then 0" })
+        }
+      }
+    }
+    try {
+      let blogs = await blogService.getBlogs(limited, skipped)
+      return res.status(200).json(blogs)
+    } catch (err) {
+      await errorService.writeErrorLog(err, "getBlogsHandler")
+      return res.status(500).json({ message: "Something went wrong" })
+    }
   }
 
   public async uploadBlogHandler(req: Request, res: Response, next: NextFunction): Promise<Response> {

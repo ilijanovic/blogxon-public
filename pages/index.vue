@@ -41,10 +41,10 @@
 <script>
 import primary from '@/components/dashboard/button/primary'
 export default {
-  async fetch() {
-    this.blogs = await this.$blogxon.getBlogs()
+  async asyncData({ $blogxon }) {
+    let blogs = await $blogxon.getBlogs()
+    return { blogs }
   },
-  data: () => ({ blogs: [] }),
   methods: {
     formatDate(date) {
       const options = { year: 'numeric', month: 'long', day: 'numeric' }
