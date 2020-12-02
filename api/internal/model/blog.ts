@@ -8,16 +8,19 @@ const blogSchema = new mongoose.Schema({
     type: String,
     trim: true,
     maxlength: config.title_length,
+    default: ""
   },
   description: {
     type: String,
     trim: true,
     maxlength: config.description_length,
+    default: ""
   },
   content: {
     type: String,
     trim: true,
     required: true,
+    default: ""
   },
   thumbnail: {
     type: String,
@@ -42,10 +45,12 @@ const blogSchema = new mongoose.Schema({
   structuredData: {
     type: String,
     required: true,
+    default: "blog"
   },
   keywords: {
     type: Array,
     required: true,
+    default: []
   },
   ips: {
     type: Array,
@@ -65,7 +70,8 @@ const blogSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    unique: true
+    unique: true,
+    default: ""
   },
   updated: {
     type: Date,

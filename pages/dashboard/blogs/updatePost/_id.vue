@@ -96,18 +96,26 @@
               :style="{ width: imageWidth + 'px', height: imageHeight + 'px' }"
               class="border rounded-md flex relative"
             >
-              <img
-                class="bg-cover absolute w-full h-full top-0 left-0"
-                @load="freeMemory"
+              <XIcon
                 v-if="image"
-                :src="image"
+                @click="removeImage"
+                size="2x"
+                class="bg-red-700 z-10 cursor-pointer text-red-100 p-1 absolute right-0 top-0 m-3"
               />
-              <input
-                class="cursor-pointer w-full h-full absolute top-0 left-0 opacity-0"
-                v-if="!image"
-                type="file"
-                @change="preview"
-              />
+              <transition name="fade" mode="out-in">
+                <img
+                  class="rounded-md object-cover bg-cover absolute w-full h-full top-0 left-0"
+                  @load="freeMemory"
+                  v-if="image"
+                  :src="image"
+                />
+                <input
+                  class="cursor-pointer w-full h-full absolute top-0 left-0 opacity-0"
+                  v-if="!image"
+                  type="file"
+                  @change="preview"
+                />
+              </transition>
               <ImageIcon class="m-auto text-gray-500" v-if="!image" size="4x" />
             </div>
           </div>
@@ -204,6 +212,10 @@ export default {
   methods: {
     selectedOption(val) {
       this.structuredData = val
+    },
+    removeImage() {
+      this.image = ''
+      this.file = ''
     },
     async uploadPost() {
       let formdata = new FormData()
