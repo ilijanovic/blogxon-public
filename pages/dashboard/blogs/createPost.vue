@@ -118,15 +118,7 @@
         >
       </div>
     </div>
-    <TuiEditor
-      v-if="!textPreview"
-      v-model="post"
-      mode="markdown"
-      height="800px"
-      style="margin-bottom: 20px"
-    />
-    <mdPreview v-if="textPreview" :text="post" />
-
+    <textarea id="mdeditor"></textarea>
     <primary
       class="mb-5"
       @click.native="uploadPost"
@@ -147,6 +139,28 @@ import dropdown from '@/components/dashboard/dropdowns/dashboardDropdown'
 import mdPreview from '@/components/dashboard/mdPreview'
 import errorModal from '@/components/dashboard/modals/error'
 export default {
+  head() {
+    return {
+      link: [
+        {
+          href: '/.blogxon/css/editor.css',
+          rel: 'stylesheet',
+        },
+      ],
+      script: [
+        {
+          src: '/.blogxon/js/editor.js',
+        },
+        {
+          src: 'https://code.jquery.com/jquery-3.5.1.min.js',
+        },
+      ],
+    }
+  },
+  async mounted() {
+    await this.$nextTick()
+    let md = new MdEditor('#mdeditor')
+  },
   data() {
     return {
       title: '',
