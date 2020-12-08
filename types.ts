@@ -163,7 +163,12 @@ export interface ConfigurationInterface {
     readonly images_path: string,
     readonly images_webp_path: string,
     readonly blogpost_view_schedule: string,
-    readonly badge_path: string
+    readonly badge_path: string,
+    readonly profile_path: string,
+    readonly profile_sizes: {
+        readonly width: number,
+        readonly height: number
+    }
 }
 
 export interface ConstantsInterface {

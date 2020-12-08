@@ -11,6 +11,7 @@ import { config } from '../../../config'
 import { cookieService } from '../service/cookie'
 import { dashboardService } from '../service/dashboard'
 import { Request, Response, NextFunction } from "express"
+import { imageService } from '../service/image'
 
 
 class AdminController {
@@ -178,6 +179,8 @@ class AdminController {
     cookieService.eraseCookie(config.cookieName, res)
     return res.status(200).json({ message: "Cookie erased" })
   }
+
+
 }
 
 export const adminController: AdminController = new AdminController()

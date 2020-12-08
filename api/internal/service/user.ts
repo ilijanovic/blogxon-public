@@ -3,6 +3,7 @@ import mongoose from "mongoose"
 
 
 import { AuthorInterface, NewUserInterface, UserInterface, UserModelInterface } from "../../../types"
+import { utilsService } from './utils'
 
 
 
@@ -45,6 +46,21 @@ class UserService {
 
     public getUsers(): Promise<UserInterface[]> {
         return User.find({}, { password: 0, "author.ips": 0 }).exec()
+    }
+
+    public async updateAuthorImage(authorId: string | mongoose.Types.ObjectId, pngPath: string, webpPath: string): Promise<void> {
+        let author = await this.getAuthorById(authorId)
+        if (!author) throw "Cannot find author"
+        let oldImage = author.image;
+        let oldWebpImage = author.image_webp
+
+        author.image_webp = webpPath;
+        author.image = pngPath;
+        await Promise.all([
+            utilsService.deleteFile(oldImage),
+            utilsService.deleteFile(oldWebpImage)
+        ])
+        await this.saveAuthor(authorId, author)
     }
 }
 

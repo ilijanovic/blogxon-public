@@ -43,7 +43,12 @@ export const config: ConfigurationInterface = {
   images_path: '/images',
   images_webp_path: '/images_webp',
   blogpost_view_schedule: "0 */2 * * *",
-  badge_path: "/badge"
+  badge_path: "/badge",
+  profile_path: "/profiles",
+  profile_sizes: {
+    width: 100,
+    height: 100
+  }
 }
 export const constants: ConstantsInterface = {
   structuredDataOptions: ["blog"]

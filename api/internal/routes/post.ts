@@ -9,7 +9,7 @@ import {
 } from '../controller/admin'
 import { authService } from '../service/auth'
 import { blogController } from '../controller/blog'
-import { uploadBadge, uploadThumbnailImage } from '../middleware/diskStorage'
+import { uploadBadge, uploadThumbnailImage, uploadProfile } from '../middleware/diskStorage'
 import { userController } from '../controller/user'
 
 let router = Router()
@@ -42,6 +42,7 @@ router.post("/uploadBadge", <RequestHandler>authService.authentication,
   <RequestHandler>uploadBadge.single("badge"),
   <RequestHandler>subscriptionController.uploadBadgeHandler)
 
+router.post("/uploadProfile", <RequestHandler>authService.authentication, <RequestHandler>uploadProfile.single("profile"), <RequestHandler>userController.setProfileImageHandler)
 router.post('/deleteBlog', <RequestHandler>authService.authentication, <RequestHandler>blogController.deleteBlogHandler)
 
 router.post("/createUser", <RequestHandler>authService.authentication, <RequestHandler>validator.adminGenerateValidator, <RequestHandler>validator.emailValidator,

@@ -38,5 +38,22 @@ const storeBadge = multer.diskStorage({
 
 })
 
+const storeProfileImage = multer.diskStorage({
+  destination: async function (req: Request, file: Express.Multer.File, cb): Promise<void> {
+    let dirExist = await utilsService.directoryExist("static" + config.profile_path)
+    if (!dirExist) {
+      await utilsService.createDirectory("static" + config.profile_path)
+    }
+    cb(null, `static${config.profile_path}`)
+  },
+  filename(req: Request, file: Express.Multer.File, cb): void {
+    let [name]: string[] = file.originalname.split(".")
+    const uniqueName: string = Date.now() + "-" + name.replace(/ /g, "") + ".png"
+    cb(null, uniqueName)
+
+  }
+})
+
 export const uploadThumbnailImage: multer.Multer = multer({ storage: storeThumbnail })
 export const uploadBadge: multer.Multer = multer({ storage: storeBadge })
+export const uploadProfile: multer.Multer = multer({ storage: storeProfileImage })
