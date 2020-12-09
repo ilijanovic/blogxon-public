@@ -28,8 +28,8 @@ class UserService {
         return users.map(({ author, _id }) => ({ ...author, _id }))
     }
 
-    public saveAuthor(_id: mongoose.Types.ObjectId | string, author: AuthorInterface): Promise<UserModelInterface | null> {
-        return User.findOneAndUpdate({ _id }, { author }, { new: true }).exec()
+    public saveAuthor(_id: mongoose.Types.ObjectId | string, author: Omit<AuthorInterface, "image" | "image_webp">): Promise<UserModelInterface | null> {
+        return User.findOneAndUpdate({ _id }, { author: { ...author } }, { new: true }).exec()
     }
 
     public async getAuthorById(_id: mongoose.Types.ObjectId | string): Promise<AuthorInterface | undefined> {
