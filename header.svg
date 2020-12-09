@@ -4,10 +4,10 @@
 			<style>
 				@keyframes pulse {
 					0% {
-						transform: scale(1.1);
+						transform: scale(1.03);
 					}
 					100% {
-						transform: scale(0.9);
+						transform: scale(0.97);
 					}
 				}
 				@keyframes gradientBackground {
@@ -50,7 +50,7 @@
 					margin: 0;
 					width: 100%;
 					padding: 40px;
-					background: linear-gradient(-45deg,#2c3e50, #95a5a6, #ecf0f1);
+					background: linear-gradient(-45deg,#2c3e50,#bdc3c7 , #95a5a6);
 					color: white;
 					text-align: center;
 				}
