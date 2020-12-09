@@ -1,4 +1,4 @@
-
+[header](/header.svg)
 
 Blogxon is a simple headless CMS system. Its made to be developer friendly as easy to use.
 Its build up on Nuxt.js in universal mode. Its backend is powered by Express.js and as database it uses MongoDB.
