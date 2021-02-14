@@ -1,4 +1,5 @@
 import { config } from './config'
+import {startupService} from "./api/internal/service/startupCheck"
 export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -112,4 +113,13 @@ export default {
     host: config.host,
     port: config.port,
   },
+    build: {
+      extend(config, { isClient }) {
+        // Extend only webpack config for client-bundle
+      
+          startupService.requirementsCheck()
+        
+      }
+    }
+  
 }
