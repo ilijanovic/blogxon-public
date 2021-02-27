@@ -7,7 +7,7 @@
     "build": "nuxt-ts build --modern=server",
     "generate": "nuxt-ts generate",
     "start": "nuxt-ts start --modern=server",
-    "vapid": "node generateKeys.js"
+    "env": "node genEnv.js"
   },
   "dependencies": {
     "@nuxt/http": "^0.6.0",
